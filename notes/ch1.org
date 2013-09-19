@@ -1,0 +1,15 @@
+* Notes for Chapter 1 *
+
+**  normal order and applicative order
+  --- 2013-09-19 12:29 ---
+  --- pg no: 16 ---
+
+  this bit is tricky. applicative order is the usual way I think of computation, apply and reduce. 
+  normal order is reduce everything in one go and *then* apply. 
+
+  applicative: apply->reduce. to the reduced form: apply->reduce.
+    So, it's Expr->apply->reduce->apply->reduce->...->Result  'till you hit rock bottom
+
+  normal: 1st reduce the given expression. To the reduced form, reduce again, and so on. 
+    So, Expr->reduce->reduce->reduce->....->ReducedExpr->apply->Result
+
