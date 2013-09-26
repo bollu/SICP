@@ -1,15 +1,59 @@
 * Notes for Chapter 1 *
 
 **  normal order and applicative order
-  --- 2013-09-19 12:29 ---
-  --- pg no: 16 ---
+--- 2013-09-19 12:29 ---
+--- pg no: 16 ---
 
-  this bit is tricky. applicative order is the usual way I think of computation, apply and reduce. 
-  normal order is reduce everything in one go and *then* apply. 
+this bit is tricky. applicative order is the usual way I think of computation, apply and reduce. 
+normal order is reduce everything in one go and *then* apply. 
 
-  applicative: apply->reduce. to the reduced form: apply->reduce.
-    So, it's Expr->apply->reduce->apply->reduce->...->Result  'till you hit rock bottom
+applicative: apply->reduce. to the reduced form: apply->reduce.
+So, it's Expr->apply->reduce->apply->reduce->...->Result  'till you hit rock bottom
 
-  normal: 1st reduce the given expression. To the reduced form, reduce again, and so on. 
-    So, Expr->reduce->reduce->reduce->....->ReducedExpr->apply->Result
+normal: 1st reduce the given expression. To the reduced form, reduce again, and so on. 
+So, Expr->reduce->reduce->reduce->....->ReducedExpr->apply->Result
+
+--- 2013-09-19 17:25 ---
+--- pg no: 30 Lexical Scoping, Free and Bound variables ---
+
+The distinction made in SICP between in free and bound variables is one that I already know of. However,
+the way that it's phrased is different from the way I usually visualize it.
+
+Anyway, free variables(as far as I have understood), are variables that on being renamed throughout the 
+function *change* the output / meaning of the function. So, for example, in the avg function, changing (+ x y) to
+(* x y) completely changes. 
+However, I used to consider those variables / functions that depend on "global" state as free (stuff like abs, cos,
+  sin...).
+
+Bound variables are those variables such that on being renamed consistently, the function remains unchanged.
+Again, I used to view them differently. I considered those variables that were given as arguments to a function
+to be bound. 
+
+I guess either my views are subtly wrong somewhere (or) (and this seems more likely) the book is trying to express
+the same thing but I'm not able to catch it's drift. Either way, interesting read so far.
+
+As for Lexical Scoping, turns out Scheme lets you define functions within functions. This lets you share data similar
+to the way all C++ class members share data with private variables. Isn't it called a closure though? I'm not entirely sure....
+
+okay - turns out lexical scoping = scoping rules as that of C/C++. Closures - different beast altogether. 
+Closures seem to be able to access data that belongs to it's "environment" at it's time of creation.
+So, if a function is created at a particular lexical scope and then returned, due to the fact that it's a closure, 
+it can now access that "environment" where it was created even though *it's no longer there* (As far as I understood it).
+It seems to be a really powerful tool. Pretty sure SICP has a chapter or two on it :)
+
+--- 2013-09-19 17:49 ---
+---  pg no: 35 Shapes of Procedures --- 
+Whoa, loving this. 
+Also, the authors nailed it - "It may seem disturbing to refer to a recursive procedure as an iterative process. However, the
+process really is iterative. It's entire state is captured by the 3 state variables."
+
+The part about how recursive processes have "hidden" data maintained by the interpreter is a great observation. I'd never
+thought of recursion as "deferred operations". I'd always considered as a marginally useful tool at best due to the
+memory cost associated with recursion if C/C++. 
+
+Looks like I'll have to change my style of writing programs significantly. This ought to be interesting.
+
+ 
+
+       
 
